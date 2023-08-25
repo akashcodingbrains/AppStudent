@@ -1,0 +1,44 @@
+﻿@model App_Student.Models.Student_view_model
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <a asp-controller="Dashboard" asp-action="Student_insert_data" class="btn btn-primary m-3">add data</a>
+            <table class="table table-striped border-2">
+                <tr>
+                    <th>Std_Id</th>
+                    <th>Email_</th>
+                    <th>Name</th>
+                    <th>Password</th>
+                    <th>Address</th>
+                    <th>Zip_Code</th>
+                    <th>Action</th>
+                </tr>
+                @{
+                    foreach (var item in Model.list_student)
+                    {
+                        <tr>
+                            <td>@item.Student_Id</td>
+                            <td>@item.Email_Address</td>
+                            <td>@item.First_Name</td>
+                            <td>@item.Password</td>
+                            <td>@item.Address</td>
+                            <td>@item.Zip_Code</td>
+                            <td>
+
+                                <a asp-controller="Dashboard" asp-action="Student_update_show_data" class="btn btn-sm btn-primary m-1" asp-route-id="@item.Student_Id">Edit</a>
+
+                                <a asp-controller="Dashboard" asp-action="Student_delete" class="btn btn-sm btn-primary m-1" asp-route-id="@item.Student_Id">Delete</a>
+                            </td>
+
+
+                        </tr>
+
+                    }
+
+
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

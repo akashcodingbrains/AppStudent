@@ -1,0 +1,126 @@
+﻿@model App_Student.Models.Student_view_model
+@{
+    ViewData["Title"] = "Student_add_data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid border-3">
+</div>
+<div class="row" style="padding:50px;">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+
+        <div class="card">
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 offset-4">
+                        <a class="btn btn-sm btn-primary float-end m-2" asp-action="AddCoursh" asp-controller="Dashboard">Back</a>
+                        <h4 class="text-primary m-2 text-center">add-Batches</h4>
+                        <form method="post" asp-action="Add_batch" asp-controller="Dashboard">
+                            <div class="form-group">
+                                <label asp-for="tbl_Batch1.Batch_Name"></label>
+                                <input type="text" class="form-control" asp-for="tbl_Batch1.Batch_Name" id="batchname" />
+                                <span asp-validation-for="Tbl_Course1.Course_Name" style="color:red" id="erbatchname"></span>
+                            </div>
+                            <div class="form-group">
+                                @* <label asp-for="Tbl_Specification.Spec_Id"></label>*@
+                                <input type="hidden" class="form-control" asp-for="Tbl_Course1.Course_Id" />
+                            </div>
+                            <div class="form-group">
+                                @* <label asp-for="Tbl_Specification.Spec_Id"></label>*@
+                                <input type="hidden" class="form-control" asp-for="Tbl_Course1.Specification_Name" />
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="tbl_Batch1.Batch_Timing"></label>
+                                <select class="form-control" asp-for="tbl_Batch1.Batch_Timing" id="batchtiming">
+                                    <option value="0">Select Timing</option>
+                                    <option value="7AM TO 10AM">7AM TO 10AM</option>
+                                    <option value="12AM TO 3PM">12AM TO 3PM</option>
+                                    <option value="3PM TO 6PM">3PM TO 6PM</option>
+                                </select>
+                                <span asp-validation-for="Tbl_Course1.Course_Name" style="color:red" id="erbatchtiming"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="tbl_Batch1.Instructor_Name"></label>
+                                <input type="text" asp-for="tbl_Batch1.Instructor_Name" class="form-control" id="instractorname" />
+                                <span asp-validation-for="Tbl_Course1.Course_Name" style="color:red" id="erinstractorname"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="tbl_Batch1.Seats"></label>
+                                <input type="text" asp-for="tbl_Batch1.Seats" class="form-control" id="seats" />
+                                <span asp-validation-for="Tbl_Course1.Course_Name" style="color:red" id="erseats"></span>
+                            </div>
+                            <div class="form-group">
+
+                                <input type="submit" class="form-control btn btn-primary btn-sm m-1 float-end" value="submit" id="btnbatch" />
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @{
+                            if (Model.list_tbl_batche1s != null)
+                            {
+
+                                @foreach (Tbl_Batch1 item in Model.list_tbl_batche1s)
+                                {
+
+                                    <div class="col-md-12">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>your Coursh</th>
+                                                    <th>Your Batche</th>
+                                                    <th>batch timing</th>
+                                                    <th>instructer name</th>
+                                                    <th>seat</th>
+                                                </tr>
+
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td> @item.Course_Name</td>
+                                                    <td> @item.Batch_Name</td>
+                                                    <td> @item.Batch_Timing</td>
+                                                    <td> @item.Instructor_Name</td>
+                                                    <td> @item.Seats</td>
+                                                    <a class="btn btn-sm btn-primary" asp-action="Add_batch" asp-controller="Dashboard" asp-route-id="@item.Batch_Id">Add Batch</a>
+
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+
+                                    </div>
+
+
+                                }
+                            }
+
+
+                        }
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<div class="col-md-1"></div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/cascadejs.js"></script>
+<script src="~/js/site.js"></script>
+<script src="~/js/batch.js"></script>

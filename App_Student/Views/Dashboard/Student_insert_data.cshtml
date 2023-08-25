@@ -1,0 +1,300 @@
+﻿@model App_Student.Models.Student_view_model
+@{
+    ViewData["Title"] = "Student_add_data";
+    Layout = null;
+}
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+</head>
+<div class="container-fluid border-3">
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-4">
+            @*<a asp-action="Add_Qualification" asp-controller="Dashboard" class="btn btn-primary float-end">Add-Coursh</a>*@
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<div class="row" style="padding:50px;">
+
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col-md-10"></div>
+            <div class="col-md-2">
+                <a asp-controller="Dashboard" asp-action="Log_out" class="btn btn-primary float-end btn-sm m-3">LogOut</a>
+            </div>
+        </div>
+        <div class="card">
+            
+            <div class="card-header">
+                <h4 class="mt-2 text-center text-primary">Student Form</h4>
+            </div>
+            <div class="card-body">
+                <form id="form_data">
+
+                    <div class="row">
+
+                        @*<div class="col-md-4">
+                        <label asp-for="tbl_Student.Student_Id"></label>
+                        <input type="text" asp-for="tbl_Student.Student_Id" class="form-control" disabled />
+                        <span asp-validation-for="tbl_Student.Student_Id"></span>
+                        </div>*@
+                       @* <div class="col-md-4">
+                            <label asp-for="tbl_Student.Registration_Id"></label>
+                            <input type="text" asp-for="tbl_Student.Registration_Id" class="form-control" id="ragistrationid" />
+                            <span asp-validation-for="tbl_Student.Registration_Id" id="sragistrationid" style="color:red"></span>
+                        </div>*@
+                      
+                        <div class="col-md-4">
+                                <label asp-for="tbl_Student.Role_Id"></label>
+                                <select class="form-control" asp-for="tbl_Student.Role_Id" asp-items="@(new SelectList(ViewBag.list,"Role_Id","Roll_Name"))" id="role">
+                                    <option value="0">Select Role</option>
+                                </select>
+                                <span asp-validation-for="tbl_Student.Role_Id" id="srole" style="color:red"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="tbl_Student.First_Name"></label>
+                            <input type="text" asp-for="tbl_Student.First_Name" class="form-control" id="fname" />
+                            <span asp-validation-for="tbl_Student.First_Name" id="sfname" style="color:red"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="tbl_Student.Last_Name"></label>
+                            <input type="text" asp-for="tbl_Student.Last_Name" class="form-control" id="lname" />
+                            <span asp-validation-for="tbl_Student.Last_Name" id="slname" style="color:red"></span>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label asp-for="tbl_Student.Contact_Number"></label>
+                            <input type="text" asp-for="tbl_Student.Contact_Number" class="form-control" id="contactnumber" />
+                            <span asp-validation-for="tbl_Student.Contact_Number" id="scontactnumber" style="color:red"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="tbl_Student.Email_Address"></label>
+                            <input type="text" asp-for="tbl_Student.Email_Address" class="form-control" id="email" />
+                            <span asp-validation-for="tbl_Student.Email_Address" id="semail" style="color:red"></span>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label asp-for="tbl_Student.Password"></label>
+                            <input type="text" asp-for="tbl_Student.Password" class="form-control" id="password" />
+                            <span asp-validation-for="tbl_Student.Password" id="spassword" style="color:red"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <label asp-for="tbl_Student.Gender"></label>
+                            <br />
+                            Male:&nbsp;<input type="radio" asp-for="tbl_Student.Gender" value="male"  id="gender"/>&nbsp;&nbsp;
+                            Female:&nbsp;<input type="radio" asp-for="tbl_Student.Gender" value="female" id="gender" />
+                            <span asp-validation-for="tbl_Student.Gender" id="sgender" style="color:red"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="tbl_Student.Father_Name"></label>
+                            <input type="text" asp-for="tbl_Student.Father_Name" class="form-control" id="fathername" />
+                            <span asp-validation-for="tbl_Student.Father_Name" id="sfathername" style="color:red"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="tbl_Student.Mother_Name"></label>
+                            <input type="text" asp-for="tbl_Student.Mother_Name" class="form-control" id="mothername" />
+                            <span asp-validation-for="tbl_Student.Mother_Name" id="smothername" style="color:red"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+
+                        <div class="col-md-4">
+                            <label asp-for="tbl_Student.Address"></label>
+                            <input type="text" asp-for="tbl_Student.Address" class="form-control" id="address" />
+                            <span asp-validation-for="tbl_Student.Address" id="saddress" style="color:red"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="tbl_Student.Zip_Code"></label>
+                            <input type="text" asp-for="tbl_Student.Zip_Code" class="form-control" id="zipcode" />
+                            <span asp-validation-for="tbl_Student.Zip_Code" id="szipcode" style="color:red"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="tbl_Student.Dob"></label>
+                            <input type="datetime-local" asp-for="tbl_Student.Dob" class="form-control" id="dob" />
+                            <span asp-validation-for="tbl_Student.Dob" id="sdob" style="color:red"></span>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <label asp-for="tbl_Student.Country"></label>
+                            <select class="form-control" asp-for="tbl_Student.Country" id="countryDropdown">
+                                <option value="0">--Select-Country--</option>
+                            </select>
+                            <span asp-validation-for="tbl_Student.Country" id="scountryDropdown" style="color:red"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="tbl_Student.State"></label>
+                            <select class="form-control" id="stateDropdown" asp-for="tbl_Student.State">
+                                <option value="0">--Select-State--</option>
+                            </select>
+                            <span asp-validation-for="tbl_Student.State" id="sstateDropdown" style="color:red"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="tbl_Student.City"></label>
+                            <select class="form-control" id="cityDropdown" asp-for="tbl_Student.City">
+                                <option value="0" >--Select-City--</option>
+                            </select>
+                            <span asp-validation-for="tbl_Student.City" id="scityDropdown" style="color:red"></span>
+                        </div>
+
+                    </div>
+                    
+
+                    <div class="row">
+                        @* <div class="col-md-4 m-4">
+
+                        <input type="checkbox" asp-for="tbl_Student.IsActive" />&nbsp; I Accept Term.
+                        <span asp-validation-for="tbl_Student.IsActive"></span>
+                        </div>*@
+                        @*<div class="col-md-4">
+                        <label asp-for="tbl_Student.Role_Id"></label>
+                        <input type="text" asp-for="tbl_Student.Role_Id" class="form-control" />
+                        <span asp-validation-for="tbl_Student.Role_Id"></span>
+                        </div>*@
+
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="m-2">Select Hobby</h5>
+                            <label asp-for="tbl_Hobby.Hobby_Name"></label>
+                            <br />
+                            @for (int i = 0; i < Model.list_hobbes.Count; i++)
+                            {
+                                <input asp-for="@Model.list_hobbes[i].Id" type="hidden" />
+                                <input asp-for="@Model.list_hobbes[i].Hobby_Name" type="hidden" />
+                                <input type="checkbox" asp-for="@Model.list_hobbes[i].Ischecked" id="subject" /> <label>@Model.list_hobbes[i].Hobby_Name</label>
+
+                                <br />
+                            }
+                            <span asp-validation-for="tbl_Hobby.Hobby_Name" id="ersubject" style="color:red"></span>
+                        </div>
+                        <div class="col-md-2">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <h5 class="m-1">Add_Qualification</h5>
+                        <div class="col-md-12">
+                            <a class="btn btn-primary m-2" id="btnAddField">add_row</a>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+
+                                        @*    <th>Std_ID</th>*@
+                                        <th>Quali_Name</th>
+                                        <th>University</th>
+                                        <th>Term_Year</th>
+                                        <th>Comple_year</th>
+                                        <th>Percentage</th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody id="table_data">
+                                    <tr>
+                                        @*<td>
+
+                                        <input asp-for="@Model.list_tbl_Qualifications[0].Student_Id" class="form-control" id="txtQualifiaction_Name" />
+                                        <span class="text-danger"></span>*
+                                        </td>*@
+                                        <td>
+                                            <input type="hidden" class="form-control" id="textStd_Qli_Id" />
+                                            <input asp-for="@Model.list_tbl_Qualifications[0].Qualifiaction_Name" class="form-control" id="txtQualifiaction_Name" />
+                                            <span class="text-danger"></span>
+                                        </td>
+
+                                        <td>
+                                            <input asp-for="@Model.list_tbl_Qualifications[0].University" class="form-control" id="txtUniversity" />
+                                            <span class="text-danger"></span>
+                                        </td>
+                                        <td>
+                                            <input asp-for="@Model.list_tbl_Qualifications[0].Term_Year" class="form-control" id="txtTerm_Year" />
+
+                                            <span class="text-danger"></span>
+                                        </td>
+                                        <td>
+                                            <input asp-for="@Model.list_tbl_Qualifications[0].Completation_Year" class="form-control" id="txtCompletation_Year" />
+                                            <span class="text-danger"></span>
+                                        </td>
+                                        <td>
+                                            <input asp-for="@Model.list_tbl_Qualifications[0].Percentage" class="form-control" id="txtPercentage" />
+                                            <span class="text-danger"></span>
+                                        </td>
+                                        <td>
+                                            <span id="row_delete"><i class="fa fa-trash-o" style="font-size:24px"></i></span>
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+
+                    @*<div class="row">
+                    <h4 class="text-center">Specification</h4>
+                    <div class="col-m-4 offset-4">
+                    <div class="col-md-4">
+                    <label asp-for="Tbl_Specification.Spec_Name"></label>
+                    <select asp-for="Tbl_Specification.Spec_Name" asp-items="@(new SelectList(ViewBag.lit,"Spec_Id","Spec_Name"))" class="form-control">
+                    </select>
+
+                    <span asp-validation-for="Tbl_Specification.Spec_Name"></span>
+                    </div>
+                    </div>
+                    </div>
+
+                    <div class="row">
+                    <h4 class="text-center">Add_courses</h4>
+
+
+
+                    </div>*@
+
+
+                    <div class="row m-2">
+                        <div>
+                            <button type="button" class="btn btn-primary float-end" id="btn_add_data">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="col-md-1"></div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/cascadejs.js"></script>
+<script src="~/js/rows.js"></script>
+<script src="~/js/validation.js"></script>

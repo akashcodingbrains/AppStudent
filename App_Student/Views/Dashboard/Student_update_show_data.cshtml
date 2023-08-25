@@ -1,0 +1,424 @@
+﻿@model App_Student.Models.Student_view_model
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+   <style>
+       .hide{
+           display:none;
+       }
+   </style>
+</head>
+<body>
+    <div class="container-fluid border-3">
+        <div class="row" style="padding:50px;">
+            <div class="row">
+                <div class="col-md-10"></div>
+                <div class="col-md-2">
+                    <a asp-controller="Dashboard" asp-action="Log_out" class="btn btn-primary float-end btn-sm m-3">LogOut</a>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+
+                <div class="card">
+
+                    <div class="card-header">
+                        <h4 class="text-center text-primary">Student Form</h4>
+
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" asp-action="Student_update_insert_data" asp-controller="Dashboard">
+                           
+                            <div class="row">
+
+                                @*<div class="col-md-4">
+                                    <label asp-for="tbl_Student.Registration_Id"></label>
+                                    <input type="text" asp-for="tbl_Student.Registration_Id" class="form-control" />
+                                    <span asp-validation-for="tbl_Student.Registration_Id"></span>
+                                </div>*@
+                                <div class="col-md-4">
+                                    <label asp-for="tbl_Student.Role_Id"></label>
+                                    <select class="form-control" asp-for="tbl_Student.Role_Id" asp-items="@(new SelectList(ViewBag.data,"Role_Id","Roll_Name"))">
+                                        <option>Select Role</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <label asp-for="tbl_Student.First_Name"></label>
+                                    <input type="text" asp-for="tbl_Student.First_Name" class="form-control" />
+                                    <span asp-validation-for="tbl_Student.First_Name"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <label asp-for="tbl_Student.Last_Name"></label>
+                                    <input type="text" asp-for="tbl_Student.Last_Name" class="form-control" />
+                                    <span asp-validation-for="tbl_Student.Last_Name"></span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+
+
+                                <div class="col-md-4">
+                                    <label asp-for="tbl_Student.Contact_Number"></label>
+                                    <input type="text" asp-for="tbl_Student.Contact_Number" class="form-control" />
+                                    <span asp-validation-for="tbl_Student.Contact_Number"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <label asp-for="tbl_Student.Email_Address"></label>
+                                    <input type="text" asp-for="tbl_Student.Email_Address" class="form-control" />
+                                    <span asp-validation-for="tbl_Student.Email_Address"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <label asp-for="tbl_Student.Dob"></label>
+                                    <input type="datetime-local" asp-for="tbl_Student.Dob" class="form-control" />
+                                    <span asp-validation-for="tbl_Student.Dob"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <label asp-for="tbl_Student.Gender"></label>
+                                    <br />
+                                    Male:&nbsp;<input type="radio" asp-for="tbl_Student.Gender" value="male" />&nbsp;&nbsp;
+                                    Female:&nbsp;<input type="radio" asp-for="tbl_Student.Gender" value="female" />
+                                    <span asp-validation-for="tbl_Student.Gender"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <label asp-for="tbl_Student.Father_Name"></label>
+                                    <input type="text" asp-for="tbl_Student.Father_Name" class="form-control" />
+                                    <span asp-validation-for="tbl_Student.Father_Name"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <label asp-for="tbl_Student.Mother_Name"></label>
+                                    <input type="text" asp-for="tbl_Student.Mother_Name" class="form-control" />
+                                    <span asp-validation-for="tbl_Student.Mother_Name"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <label asp-for="tbl_Student.Password"></label>
+                                    <input type="text" asp-for="tbl_Student.Password" class="form-control" />
+                                    <span asp-validation-for="tbl_Student.Password"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <label asp-for="tbl_Student.Address"></label>
+                                    <input type="text" asp-for="tbl_Student.Address" class="form-control" />
+                                    <span asp-validation-for="tbl_Student.Address"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <label asp-for="tbl_Student.Zip_Code"></label>
+                                    <input type="text" asp-for="tbl_Student.Zip_Code" class="form-control" />
+                                    <span asp-validation-for="tbl_Student.Zip_Code"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <label asp-for="tbl_Student.Country"></label>
+
+                                    <select class="form-control" asp-for="tbl_Student.Country" id="countryDropdown" data-student-country="@Model.tbl_Student.Country">
+
+                                        <option>--Select-Country--</option>
+                                    </select>
+
+                                    <span asp-validation-for="tbl_Student.Country"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <label asp-for="tbl_Student.State"></label>
+
+                                    <select class="form-control" asp-for="tbl_Student.State" id="stateDropdown" data-student-state="@Model.tbl_Student.State">
+                                        <option>--Select-State--</option>
+                                    </select>
+
+
+
+                                    <span asp-validation-for="tbl_Student.State"></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <label asp-for="tbl_Student.City"></label>
+
+                                    <select class="form-control" asp-for="tbl_Student.City" id="cityDropdown" data-student-city="@Model.tbl_Student.City">
+                                        <option>--Select-City--</option>
+                                    </select>
+                                    <span asp-validation-for="tbl_Student.City"></span>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                
+                                <div class="col-md-4">
+                                    <div class="col-md-4">
+                                        <input type="hidden" asp-for="tbl_Student.Student_Id" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-4"></div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="m-2">Select Hobby</h5>
+                                    <label asp-for="tbl_Hobby.Hobby_Name"></label>
+                                    <br />
+                                    @for (int i = 0; i < Model.list_hobbes.Count; i++)
+                                    {
+                                        <input asp-for="@Model.list_hobbes[i].Id" type="hidden" />
+                                        <input asp-for="@Model.list_hobbes[i].Hobby_Name" type="hidden" />
+                                        <input type="checkbox" asp-for="@Model.list_hobbes[i].Ischecked" id="subject" /> <label>@Model.list_hobbes[i].Hobby_Name</label>
+
+                                        <br />
+                                    }
+                                    <span asp-validation-for="tbl_Hobby.Hobby_Name" id="ersubject"></span>
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table table-striped">
+                                        @*<a class="btn btn-primary m-2 float-end" id="updatebtn">add_row</a>*@
+                                        <thead>
+
+                                            <tr>
+
+                                                @* <th>Quali_Id</th>
+                                                <th>Std_Id</th>*@
+                                                <th>Quali_Name</th>
+                                                <th>University</th>
+                                                <th>Term_Year</th>
+                                                <th>Comple_year</th>
+                                                <th>Percentage</th>
+                                                @* <th>Act</th>*@
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id="table_update_row">
+
+                                            @{
+
+                                                if (Model.list_tbl_Qualifications != null)
+                                                {
+                                                    for (int i = 0; i < Model.list_tbl_Qualifications.Count(); i++)
+                                                    {
+                                                        <tr>
+                                                            @* <td>
+                                                <input asp-for="@Model.list_tbl_Qualifications[i].Std_Qli_Id" value="@Model.list_tbl_Qualifications[i].Std_Qli_Id" class="form-control" id="txtQualifiaction_Name" />
+                                                <span class="text-danger"></span>
+                                                </td>*@
+                                                            @*<td>
+
+                                                <input asp-for="@Model.list_tbl_Qualifications[i].Student_Id" value="@Model.list_tbl_Qualifications[i].Student_Id" class="form-control" id="txtQualifiaction_Name" />
+                                                <span class="text-danger"></span>
+                                                </td>*@
+                                                            <td>
+                                                                <input type="hidden" class="form-control" id="textStd_Qli_Id" />
+                                                                <input asp-for="@Model.list_tbl_Qualifications[i].Qualifiaction_Name" value="@Model.list_tbl_Qualifications[i].Qualifiaction_Name" class="form-control" id="txtQualifiaction_Name" />
+                                                                <span class="text-danger"></span>
+                                                            </td>
+
+                                                            <td>
+                                                                <input asp-for="@Model.list_tbl_Qualifications[i].University" value="@Model.list_tbl_Qualifications[i].University" class="form-control" id="txtUniversity" />
+                                                                <span class="text-danger"></span>
+                                                            </td>
+                                                            <td>
+                                                                <input asp-for="@Model.list_tbl_Qualifications[i].Term_Year" value="@Model.list_tbl_Qualifications[i].Term_Year" class="form-control" id="txtTerm_Year" />
+
+                                                                <span class="text-danger"></span>
+                                                            </td>
+                                                            <td>
+                                                                <input asp-for="@Model.list_tbl_Qualifications[i].Completation_Year" value="@Model.list_tbl_Qualifications[i].Completation_Year" class="form-control" id="txtCompletation_Year" />
+                                                                <span class="text-danger"></span>
+                                                            </td>
+                                                            <td>
+                                                                <input asp-for="@Model.list_tbl_Qualifications[i].Percentage" value="@Model.list_tbl_Qualifications[i].Percentage" class="form-control" id="txtPercentage" />
+                                                                <span class="text-danger"></span>
+                                                            </td>
+                                                            @*<td>
+                                                <a><i class="fa fa-trash-o" style="font-size:24px"></i></a>
+                                                <a><i class="fa fa-edit" style="font-size:24px"></i></a>
+                                                </td>*@
+
+
+                                                        </tr>
+
+                                                    }
+                                                }
+                                            }
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+
+
+                            </div>
+                            @*show data of courshe table and coursh table*@
+                            <div class="row m-3">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select asp-for="Tbl_Specification.Spec_Name" class="form-control" id="Specification">
+                                            <option value="-1">Select Specification</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select asp-for="Tbl_Course1.Course_Name" class="form-control" id="Course">
+                                            <option value="-1">Select Course</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <select asp-for="tbl_Batch1.Batch_Name" class="form-control" id="batch">
+                                            <option value="-1">Select batch</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 offset-3" id="div">
+                                    <h4 class="text-center">Table Course</h4>
+                                    <table class="table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Course Name</th>
+                                                <th>Fees</th>
+                                                <th>Fuctionality</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="tblcources">
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 offset-3" id="div1">
+                                    <h4 class="text-center">Table Batch</h4>
+                                    <table class="table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Batch_Name </th>
+                                                <th>Course_Name</th>
+                                                <th>Batch_Timing</th>
+                                                <th>Instructor</th>
+                                                <th>Seats</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="TBLSDS">
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 offset-3" id="div2">
+                                    <h4 class="text-center">by sourse</h4>
+                                    <table class="table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Fee </th>
+                                                <th>Gst</th>
+                                                <th>Total With Gst</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tblby">
+                                        </tbody>
+                                    </table>
+
+
+                                </div>
+                                <div class="m-1">
+                                    <a class="btn btn-sm btn-primary float-end" id="btnby">Buy Course</a>
+                                </div>
+
+                            </div>
+                            
+                            <div class="row m-3" >
+                                <div class="col-md-8 offset-2" >
+                                    
+                                    <div class="form-group hide" id="DivPayment">
+                                        <select id="payment">
+                                            <option value="-1">Select Payment</option>
+                                            <option value="Upi">Upi</option>
+                                            <option value="Cash">Cash</option>
+                                            <option value="Banking">Banking</option>
+                                            <option value="Cheque">Cheque</option>
+                                        </select>
+                                        <a class="btn btn-sm btn-primary" id="Upi">Pay</a>
+                                       
+                                    </div>
+
+                                </div>
+                            </div>
+                           @*<div class="row">
+                                <div class="col-md-12" id="div3">
+                                    @Html.Partial("~/Views/Shared/_Upi.cshtml",Model.Tbl_Transaction)
+                                   
+                               </div>
+                           </div>*@
+
+                            @*<div class="row">
+                            <div class="col-md-12" id="div4">
+                                    @Html.Partial("~/Views/Shared/_Cash.cshtml",Model.Tbl_Transaction)
+                            </div>
+                           </div>*@
+                           <div class="row">
+                            <div class="col-md-12" id="div5">
+                                    @Html.Partial("~/Views/Shared/_Payment.cshtml",Model.Tbl_Transaction)
+                            </div>
+                           </div>
+                           @*<div class="row">
+                            <div class="col-md-12" id="div6">
+                                    @Html.Partial("~/Views/Shared/_Check.cshtml",Model.Tbl_Transaction)
+                            </div>
+                           </div>*@
+                         
+                             <input type="submit" value="Submit" class="btn btn-primary float-end btn-sm" />
+                        
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+
+
+</body>
+</html>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/rows.js"></script>
+<script src="~/js/update_std.js"></script>
+<script src="~/js/cascadejs.js"></script>

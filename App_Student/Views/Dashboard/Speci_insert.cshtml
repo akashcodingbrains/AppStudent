@@ -1,0 +1,60 @@
+﻿@model App_Student.Models.Tbl_Specification
+@{
+    ViewData["Title"] = "Student_add_data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid border-3">
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<div class="row" style="padding:50px;">
+
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+
+        <div class="card">
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 offset-4">
+                        <h4 class="text-primary m-2 text-center">add-specification</h4>
+                        <form method="post" asp-action="Speci_insert" asp-controller="Dashboard">
+                            <div class="form-group">
+                                <label asp-for="Spec_Id"></label>
+                                <input type="text" class="form-control" asp-for="Spec_Id" disabled />
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Spec_Name"></label>
+                                <input type="text" class="form-control" asp-for="Spec_Name" id="specification" />
+                                <span asp-validation-for="Spec_Name" id="erspecification" style="color:red"></span>
+                            </div>
+                            <div class="form-group">
+
+                                <input type="submit" class="form-control btn btn-primary btn-sm m-1 float-end" value="submit" id="specificationbtn" />
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="col-md-1"></div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/cascadejs.js"></script>
+<script src="~/js/site.js"></script>
+<script src="~/js/specication.js"></script>

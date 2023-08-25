@@ -1,0 +1,60 @@
+﻿@model IList<App_Student.Models.Tbl_Qualification>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <a class="btn btn-primary m-2" id="btnAddField">add_row</a>
+            <form id="form_data">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+
+                            <th>Qualifiaction_Name</th>
+                            <th>University</th>
+                            <th>Term_Year</th>
+                            <th>Completation_Year</th>
+                            <th>Percentage</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="table_data">
+                        <tr>
+                            <td>
+                                @*<input type="hidden" class="form-control" id="textStd_Qli_Id" />*@
+                                <input asp-for="@Model[0].Qualifiaction_Name" class="form-control" id="txtQualifiaction_Name" />
+                                <span class="text-danger"></span>
+                            </td>
+                            <td>
+                                <input asp-for="@Model[0].University" class="form-control" id="txtUniversity" />
+                                <span class="text-danger"></span>
+                            </td>
+                            <td>
+                                <input asp-for="@Model[0].Term_Year" class="form-control" id="txtTerm_Year" />
+
+                                <span class="text-danger"></span>
+                            </td>
+                            <td>
+                                <input asp-for="@Model[0].Completation_Year" class="form-control" id="txtCompletation_Year" />
+                                <span class="text-danger"></span>
+                            </td>
+                            <td>
+                                <input asp-for="@Model[0].Percentage" class="form-control" id="txtPercentage" />
+                                <span class="text-danger"></span>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+                <input type="submit" value="submit" class="btn btn-primary float-end m-2" id="btn_add_data" />
+
+            </form>
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/quali_js.js"></script>

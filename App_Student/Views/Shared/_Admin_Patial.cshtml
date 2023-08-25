@@ -1,0 +1,56 @@
+﻿@model App_Student.Models.Student_view_model
+<div class="container-fluid border-3">
+
+    <div class="row" style="padding:50px;">
+
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-10">
+
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="row">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Specification</th>
+                                    <th>Add</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    if (ViewBag.data != null)
+                                    {
+                                        foreach (var ts in ViewBag.data)
+                                    {
+
+                                        <tr>
+                                            <td>@ts.Spec_Name</td>
+                                           
+                                        </tr>
+
+                                    }
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="col-md-1"></div>
+    </div>
+
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/cascadejs.js"></script>
+<script src="~/js/site.js"></script>

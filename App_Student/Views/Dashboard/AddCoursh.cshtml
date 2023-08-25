@@ -1,0 +1,199 @@
+﻿@model App_Student.Models.Student_view_model
+@{
+    ViewData["Title"] = "Student_add_data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<
+<div class="container-fluid">
+    <div class="row">
+        <
+        <div class="col-md-10 offset-1">
+            <a class="btn btn-sm btn-primary float-end m-2" asp-action="Admin" asp-controller="Dashboard">Back</a>
+        </div>
+    </div>
+    <div class="row">
+        <
+        <div class="col-md-10 offset-sm-1">
+
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="text-primary m-2 text-center">add Course</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 offset-4">
+
+                            
+                            <form method="post" asp-action="AddCoursh" asp-controller="Dashboard">
+                                <div class="form-group">
+                                    <label asp-for="Tbl_Course1.Course_Name"></label>
+                                    <input type="text" class="form-control" asp-for="Tbl_Course1.Course_Name" id="coursename" />
+                                    <span asp-validation-for="Tbl_Course1.Course_Name" style="color:red" id="ercoursename"></span>
+                                </div>
+                                <div class="form-group">
+                                    @* <label asp-for="Tbl_Specification.Spec_Id"></label>*@
+                                    <input type="hidden" class="form-control" asp-for="Tbl_Specification.Spec_Name" />
+                                </div>
+                                <div class="form-group">
+                                    @* <label asp-for="Tbl_Specification.Spec_Id"></label>*@
+                                    <input type="hidden" class="form-control" asp-for="Tbl_Specification.Spec_Id" />
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Tbl_Course1.Fee"></label>
+                                    <input type="text" class="form-control" asp-for="Tbl_Course1.Fee" id="fee" />
+                                    <span asp-validation-for="Tbl_Course1.Fee" style="color:red" id="erfee"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Tbl_Course1.Live_Class"></label>
+                                    <input type="checkbox" asp-for="Tbl_Course1.Live_Class" id="liveclass" />
+                                    <span asp-validation-for="Tbl_Course1.Live_Class" style="color:red" id="erliveclass"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Tbl_Course1.Recorded_Class"></label>
+                                    <input type="checkbox" asp-for="Tbl_Course1.Recorded_Class" id="recordclass" />
+                                    <span asp-validation-for="Tbl_Course1.Recorded_Class" style="color:red" id="errecordclass"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Tbl_Course1.DPP"></label>
+                                    <input type="checkbox" asp-for="Tbl_Course1.DPP" id="dpp" />
+                                    <span asp-validation-for="Tbl_Course1.Course_Name" style="color:red" id="erdpp"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Tbl_Course1.Mock_Test"></label>
+                                    <input type="checkbox" asp-for="Tbl_Course1.Mock_Test" id="mocktext" />
+                                    <span asp-validation-for="Tbl_Course1.Course_Name" style="color:red" id="ermocktext"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Tbl_Course1.Doubt_Solving_Session"></label>
+                                    <input type="checkbox" asp-for="Tbl_Course1.Doubt_Solving_Session" id="dss" />
+                                    <span asp-validation-for="Tbl_Course1.Course_Name" style="color:red" id="erdss"></span>
+                                </div>
+                                <div class="form-group">
+
+                                    <input type="submit" class="form-control btn btn-primary btn-sm m-1 float-end" value="submit" id="btncoursh" />
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-md-12">
+                            @{
+                                if (Model.list_tnl_Course1 != null)
+                                {
+
+                                    @foreach (Tbl_Course1 item in Model.list_tnl_Course1)
+                                    {
+
+                                        <div class="col-md-8">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>Course Name</th>
+                                                        <th>Subject Name</th>
+                                                        <th>Fee</th>
+                                                        <th>Live Class</th>
+                                                        <th>Recorded Class</th>
+                                                        <th>Mock Text</th>
+                                                        <th>Doubt Solving</th>
+                                                        <th>DPP</th>
+                                                    </tr>
+
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td> @item.Specification_Name</td>
+                                                        <td>
+                                                            @item.Course_Name
+                                                        </td>
+                                                        <td>
+                                                            @item.Fee
+                                                        </td>
+                                                        <td>
+                                                            @if (item.Live_Class == true)
+                                                            {
+                                                                <p>Live_Class</p>
+                                                            }
+                                                            else
+                                                            {
+                                                                <p style="text-decoration:line-through;">Live_Class</p>
+
+                                                            }
+                                                        </td>
+
+                                                        <td>
+                                                            @if (item.Recorded_Class == true)
+                                                            {
+                                                                <p>Recorded_Class</p>
+                                                            }
+                                                            else
+                                                            {
+                                                                <p style="text-decoration:line-through;">Recorded_Class</p>
+
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @if (item.Mock_Test == true)
+                                                            {
+                                                                <p>Mock_Test</p>
+                                                            }
+                                                            else
+                                                            {
+                                                                <p style="text-decoration:line-through;">Mock_Test</p>
+
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @if (item.Doubt_Solving_Session == true)
+                                                            {
+                                                                <p>Doubt_Solving_Session</p>
+                                                            }
+                                                            else
+                                                            {
+                                                                <p style="text-decoration:line-through;">Doubt_Solving_Session</p>
+
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @if (item.DPP == true)
+                                                            {
+                                                                <p>DPP</p>
+                                                            }
+                                                            else
+                                                            {
+                                                                <p style="text-decoration:line-through;">DPP</p>
+
+                                                            }
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <a class="btn btn-sm btn-primary" asp-action="Add_batch" asp-controller="Dashboard" asp-route-id="@item.Course_Id">add-Batches</a>
+                                        </div>
+
+                                    }
+                                }
+
+
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/cascadejs.js"></script>
+<script src="~/js/site.js"></script>
+<script src="~/js/course.js"></script>

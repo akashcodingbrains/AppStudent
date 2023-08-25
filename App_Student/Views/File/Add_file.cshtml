@@ -1,0 +1,22 @@
+﻿@model App_Student.Models.other.Tbl_file
+@{
+    ViewData["Title"] = "Add_file";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input type="text" asp-for="Name" />
+            </div>
+            <div class="form-group">
+                <label asp-for="File_Name"></label>
+                <input type="text" asp-for="File_Name" />
+            </div>
+            <div class="form-group m-3">
+                <input type="submit" value="submit" />
+            </div>
+        </div>
+    </div>
+</div>
+
